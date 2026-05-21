@@ -4,7 +4,7 @@ MÓDULO: CONEXIÓN Y CONSULTAS A POSTGRESQL (SUPABASE)
 =============================================================
 """
 
-import psycopg2
+import psycopg
 import pandas as pd
 import streamlit as st
 
@@ -20,15 +20,15 @@ POSTGRES_CONFIG = {
 
 def conectar_sqlserver():
     try:
-        conexion = psycopg2.connect(
+        conexion = psycopg.connect(
             host=POSTGRES_CONFIG["host"],
             port=POSTGRES_CONFIG["port"],
-            database=POSTGRES_CONFIG["database"],
+            dbname=POSTGRES_CONFIG["database"],
             user=POSTGRES_CONFIG["user"],
             password=POSTGRES_CONFIG["password"],
             sslmode="require",
             connect_timeout=10,
-        )
+)
         return conexion
     except Exception as e:
         st.error(f"Error de conexión a PostgreSQL (Supabase): {e}")
